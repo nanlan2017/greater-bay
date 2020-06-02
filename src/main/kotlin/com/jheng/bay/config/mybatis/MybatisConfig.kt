@@ -35,7 +35,7 @@ import javax.sql.DataSource
         basePackageClasses = [CorePackageClass::class],
         annotationClass = Mapper::class
 )
-@Configuration
+//@Configuration
 class MybatisConfig {
 
     @Autowired
