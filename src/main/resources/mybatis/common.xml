@@ -1,0 +1,26 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="common">
+
+    <sql id="page">
+        <if test="sort != null and sort != ''">
+            ORDER BY ${sort} ${direction}
+        </if>
+        <if test="size > 0 and page > 0">
+            LIMIT ${@java.lang.Integer@valueOf((page - 1) * size)}, ${size}
+        </if>
+    </sql>
+
+    <sql id="by_delete_time">
+        <choose>
+            <when test=" include_deleted != null or include_deleted or 'true'.equals(include_deleted) ">
+            </when>
+            <when test=" only_deleted != null or only_deleted or 'true'.equals(only_deleted) ">
+                AND delete_time != 0
+            </when>
+            <otherwise>
+                AND delete_time = 0
+            </otherwise>
+        </choose>
+    </sql>
+
+</mapper>
