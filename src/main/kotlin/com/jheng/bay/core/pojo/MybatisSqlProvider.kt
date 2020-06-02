@@ -10,7 +10,10 @@ interface MybatisSqlProvider {
          * the provider must contains a method have the same name to context.mapperMethod.name
          */
         @JvmStatic
-        fun provideSql(context: ProviderContext, provider: MybatisSqlProvider): String {
+        fun provideSql(
+                context: ProviderContext,
+                provider: MybatisSqlProvider
+        ): String {
             val method = provider::class.memberFunctions
                     .find {
                         it.name == context.mapperMethod.name

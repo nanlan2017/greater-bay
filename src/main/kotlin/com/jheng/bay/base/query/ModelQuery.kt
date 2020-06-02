@@ -1,9 +1,9 @@
 package com.jheng.bay.base.query
 
-import com.jheng.bay.base.model.BaseModel
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.google.common.reflect.TypeToken
 import com.jheng.bay.annotation.Condition
+import com.jheng.bay.base.model.BaseModel
 import com.jheng.bay.extensions.base_model_companion
 import com.jheng.bay.util.ReflectionUtil
 import org.apache.ibatis.jdbc.SQL

@@ -18,7 +18,10 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice
  */
 @RestControllerAdvice
 class ResponseJsonAdvice : ResponseBodyAdvice<Any> {
-    override fun supports(returnType: MethodParameter, converterType: Class<out HttpMessageConverter<*>>): Boolean {
+    override fun supports(
+            returnType: MethodParameter,
+            converterType: Class<out HttpMessageConverter<*>>
+    ): Boolean {
         return AbstractJackson2HttpMessageConverter::class.java.isAssignableFrom(converterType)
     }
 

@@ -1,6 +1,6 @@
 package com.jheng.bay.core.pojo
 
-import ROOT_PACKAGE_NAME
+import com.jheng.bay.core.ROOT_PACKAGE_NAME
 
 class ExceptionHint private constructor(
         val exception_class: String,

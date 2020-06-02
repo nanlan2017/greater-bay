@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class BayController {
+
     @Autowired(required = false)
     private var buildProperties: BuildProperties? = null
     @Autowired(required = false)
@@ -22,6 +23,7 @@ class BayController {
     fun git_info(): GitProperties? {
         return gitProperties
     }
+
     @GetMapping
     fun index(): String {
         return "Hello, welcome to big bay area!"

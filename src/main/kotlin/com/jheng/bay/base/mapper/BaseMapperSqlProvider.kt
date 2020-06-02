@@ -14,7 +14,7 @@ import kotlin.reflect.full.isSubclassOf
 @Suppress("UNUSED_PARAMETER")
 class BaseMapperSqlProvider : ProviderMethodResolver {
     @Suppress("UNCHECKED_CAST")
-    val ProviderContext.modelClass: KClass<out BaseModel>
+    val ProviderContext.model_class: KClass<out BaseModel>
         get() = this.mapperType.genericInterfaces
                 .flatMap { type ->
                     (type as? ParameterizedType)
@@ -43,21 +43,21 @@ class BaseMapperSqlProvider : ProviderMethodResolver {
     fun one(
             context: ProviderContext,
             id: Int
-    ): String = context.modelClass.base_model_companion.sql_select_by_id
+    ): String = context.model_class.base_model_companion.sql_select_by_id
 
     fun save(
             context: ProviderContext,
             model: BaseModel
-    ): String = context.modelClass.base_model_companion.sql_save
+    ): String = context.model_class.base_model_companion.sql_save
 
 
     fun update(
             context: ProviderContext,
             model: BaseModel
-    ): String = context.modelClass.base_model_companion.sql_update
+    ): String = context.model_class.base_model_companion.sql_update
 
     fun delete(
             context: ProviderContext,
             id: Int
-    ): String = context.modelClass.base_model_companion.sql_delete_by_id
+    ): String = context.model_class.base_model_companion.sql_delete_by_id
 }

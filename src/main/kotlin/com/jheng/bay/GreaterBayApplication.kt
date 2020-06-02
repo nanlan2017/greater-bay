@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class GreaterBayApplication
 
 fun main(args: Array<String>) {
-	runApplication<GreaterBayApplication>(*args)
+    runApplication<GreaterBayApplication>(*args)
 }

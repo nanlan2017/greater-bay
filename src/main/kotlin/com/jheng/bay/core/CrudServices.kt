@@ -19,8 +19,6 @@ class CrudServices {
 
     @Transient
     private lateinit var model_class_service_map: Map<KClass<*>, BaseService<*>>
-    @Transient
-    private lateinit var service_class_service_map: Map<KClass<*>, BaseService<*>>
 
     @Autowired
     private lateinit var applicationContext: ApplicationContext
@@ -29,7 +27,6 @@ class CrudServices {
     fun postConstruct() {
         val services = applicationContext.getBeansOfType<BaseService<*>>()
         model_class_service_map = services.values.associateBy { it.model_class }
-        service_class_service_map = services.values.associateBy { it::class }
     }
 
     //region accesor
@@ -44,16 +41,6 @@ class CrudServices {
         return service_by_model(M::class)
     }
 
-    fun <S : BaseService<out BaseModel>> service(service_class: KClass<S>): S {
-        val service = service_class_service_map[service_class]
-                ?: throw IllegalArgumentException("no service(class=${service_class.simpleName}) registered")
-        @Suppress("UNCHECKED_CAST")
-        return service as S
-    }
-
-    final inline fun <reified S : BaseService<out BaseModel>> service(): S {
-        return service(S::class)
-    }
     //endregion
 
     //region crud
@@ -65,7 +52,7 @@ class CrudServices {
         return service_by_model(model_class).find(id, extra)
     }
 
-    final inline fun <reified M : BaseModel> find (
+    final inline fun <reified M : BaseModel> find(
             id: Int,
             extra: Set<String>? = null
     ): M? {
@@ -114,11 +101,14 @@ class CrudServices {
         return service_by_model<M>().update(model)
     }
 
-    final inline fun <reified M : BaseModel> patch(id: Int, map: Map<String, Any?>): M {
+    final inline fun <reified M : BaseModel> patch(
+            id: Int,
+            map: Map<String, Any?>
+    ): M {
         return service_by_model<M>().patch(id, map)
     }
 
-    final inline fun <reified M: BaseModel> save_or_update(model: M): M {
+    final inline fun <reified M : BaseModel> save_or_update(model: M): M {
         return service_by_model<M>().save_or_update(model)
     }
 

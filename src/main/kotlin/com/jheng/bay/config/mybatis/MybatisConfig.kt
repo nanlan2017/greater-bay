@@ -53,22 +53,36 @@ class MybatisConfig {
      */
     class CustomEnumTypeHandler<E : Enum<E>>(private val type: Class<E>) : BaseTypeHandler<E>() {
 
-        override fun getNullableResult(rs: ResultSet, columnName: String): E? {
+        override fun getNullableResult(
+                rs: ResultSet,
+                columnName: String
+        ): E? {
             val s = rs.getString(columnName)
             return if (s.isNullOrEmpty()) null else java.lang.Enum.valueOf(type, s)
         }
 
-        override fun getNullableResult(rs: ResultSet, columnIndex: Int): E? {
+        override fun getNullableResult(
+                rs: ResultSet,
+                columnIndex: Int
+        ): E? {
             val s = rs.getString(columnIndex)
             return if (s.isNullOrEmpty()) null else java.lang.Enum.valueOf(type, s)
         }
 
-        override fun getNullableResult(cs: CallableStatement, columnIndex: Int): E? {
+        override fun getNullableResult(
+                cs: CallableStatement,
+                columnIndex: Int
+        ): E? {
             val s = cs.getString(columnIndex)
             return if (s.isNullOrEmpty()) null else java.lang.Enum.valueOf(type, s)
         }
 
-        override fun setNonNullParameter(ps: PreparedStatement, i: Int, parameter: E, jdbcType: JdbcType?) {
+        override fun setNonNullParameter(
+                ps: PreparedStatement,
+                i: Int,
+                parameter: E,
+                jdbcType: JdbcType?
+        ) {
             if (jdbcType == null) {
                 ps.setString(i, parameter.name)
             } else {
@@ -89,9 +103,10 @@ class MybatisConfig {
         // wild card typeAliasesPackage, typeHandler
         // https://github.com/mybatis/spring-boot-starter/issues/314
         // https://github.com/mybatis/spring/pull/359
-//        factoryBean.setTypeAliasesPackage("com.cpvsn.rm.core.features.**.model,com.cpvsn.rm.core.features.**.pojo")
+//        factoryBean.setTypeAliasesPackage("com.jheng.bay.features.**.model,com.jheng.bay.features.**.pojo")
+
         val classes = filterTypeAliasesClasses(scanClasses(
-                packagePatterns = "com.cpvsn.rm.core.features.**.model,com.cpvsn.rm.core.features.**.pojo,com.cpvsn.rm.core.core.pojo"
+                packagePatterns = "com.jheng.bay.features.**.model,com.jheng.bay.features.**.pojo,com.jheng.bay.core.pojo"
         ))
 
         val configuration = mybatisProperties.configuration
@@ -151,7 +166,10 @@ class MybatisConfig {
      * @param packagePatterns
      * @param assignableType typeAliasesSuperType
      */
-    private fun scanClasses(packagePatterns: String, assignableType: Class<*>? = null): Set<Class<*>> {
+    private fun scanClasses(
+            packagePatterns: String,
+            assignableType: Class<*>? = null
+    ): Set<Class<*>> {
         val RESOURCE_PATTERN_RESOLVER: ResourcePatternResolver = PathMatchingResourcePatternResolver()
         val METADATA_READER_FACTORY: MetadataReaderFactory = CachingMetadataReaderFactory()
 

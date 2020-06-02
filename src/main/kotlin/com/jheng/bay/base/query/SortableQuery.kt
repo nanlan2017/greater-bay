@@ -1,7 +1,7 @@
 package com.jheng.bay.base.query
 
-import org.springframework.data.domain.Sort
 import org.apache.ibatis.jdbc.SQL
+import org.springframework.data.domain.Sort
 
 /**
  * we can use spring annotation to set default value

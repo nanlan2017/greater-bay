@@ -28,7 +28,10 @@ data class Patch<T : Any>(
     class PatchDeserializer : JsonDeserializer<Patch<*>>(), ContextualDeserializer {
         lateinit var model_class: KClass<*>
 
-        override fun createContextual(ctxt: DeserializationContext, property: BeanProperty?): JsonDeserializer<*> {
+        override fun createContextual(
+                ctxt: DeserializationContext,
+                property: BeanProperty?
+        ): JsonDeserializer<*> {
             val wrapperType = property?.type ?: ctxt.contextualType
             val clazz = wrapperType.containedType(0).rawClass
             return PatchDeserializer().apply {
@@ -37,7 +40,10 @@ data class Patch<T : Any>(
         }
 
         @Suppress("UNCHECKED_CAST")
-        override fun deserialize(p: JsonParser, ctxt: DeserializationContext): Patch<*> {
+        override fun deserialize(
+                p: JsonParser,
+                ctxt: DeserializationContext
+        ): Patch<*> {
             val raw_map = p.codec.readValue(p, Map::class.java) as Map<String, Any?>
             return Patch(raw_map, model_class)
         }

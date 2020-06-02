@@ -5,21 +5,6 @@ import com.jheng.bay.extensions.to_extra
 import com.jheng.bay.util.Regexes
 import java.time.Instant
 
-/**
- * Note that this class is immutable by far
- * That is, all method will leave the old instance unchanged!
- * e.g.
- * ```
- *   val added = old.add(k, v)
- *   old.containsKey(k) => false
- *   added.containsKey(k) => true
- * ```
- * I decide to do so cuz I have a awful experience with a mutable PageSearch
- * please think twice if you want to add a mutable method to this class
- *
- * further reading:
- *   - Item15: Minimize Mutability --<<Effective Java>>
- */
 class PageSearch private constructor(
         private val map: Map<String, Any?>
 ) : Map<String, Any?> by map {

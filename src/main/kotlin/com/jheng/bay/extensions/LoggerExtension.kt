@@ -11,7 +11,10 @@ internal inline fun Logger.trace(msg: () -> Any) {
     }
 }
 
-internal inline fun Logger.trace(msg: () -> Any, t: Throwable) {
+internal inline fun Logger.trace(
+        msg: () -> Any,
+        t: Throwable
+) {
     if (isTraceEnabled) {
         trace(msg().toString(), t)
     }
@@ -23,7 +26,10 @@ internal inline fun Logger.debug(msg: () -> Any) {
     }
 }
 
-internal inline fun Logger.debug(msg: () -> Any, t: Throwable) {
+internal inline fun Logger.debug(
+        msg: () -> Any,
+        t: Throwable
+) {
     if (isDebugEnabled) {
         trace(msg().toString(), t)
     }

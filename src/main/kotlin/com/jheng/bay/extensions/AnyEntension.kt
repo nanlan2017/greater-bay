@@ -1,4 +1,5 @@
 package com.jheng.bay.extensions
+
 import com.fasterxml.jackson.module.kotlin.convertValue
 import com.jheng.bay.util.JacksonUtil
 import kotlin.reflect.full.memberProperties

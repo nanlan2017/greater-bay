@@ -1,7 +1,7 @@
 package com.jheng.bay.base.service
 
-import com.jheng.bay.base.query.AggregationQuery
 import com.jheng.bay.base.mapper.AggregationMapper
+import com.jheng.bay.base.query.AggregationQuery
 import com.jheng.bay.core.pojo.AggregationBucket
 import org.springframework.transaction.annotation.Transactional
 

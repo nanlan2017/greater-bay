@@ -1,8 +1,8 @@
 package com.jheng.bay.util
 
-import com.jheng.bay.base.model.BaseModel
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.MapperFeature
+import com.jheng.bay.base.model.BaseModel
 import com.jheng.bay.extensions.id
 import kotlin.reflect.KClass
 import kotlin.reflect.KMutableProperty

@@ -1,7 +1,7 @@
 package com.jheng.bay.config
 
-import com.jheng.bay.base.query.ModelQueryArgumentResolver
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.jheng.bay.base.query.ModelQueryArgumentResolver
 import com.jheng.bay.util.JacksonUtil
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
